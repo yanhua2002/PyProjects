@@ -56,5 +56,42 @@ class PyWeiboLoginAPI(object):
 
         self.user_name=user_name
         self.pass_word=pass_word
+        self.prelogin_data=None
+
+        post_data={
+            "entry":"openapi",
+            "gateway":"1",
+            "from":"",
+            "savestate":"0",
+            "useticket":"1",
+            "pagerefer":"https://www.zhihu.com/",
+            "ct":"1800",
+            "s":"1",
+            "vsnf":"1",
+            "vsnval":"",
+            "door":"",
+            "appkey":"4WfYdm",
+            "su":self.user_name,
+            "service":"miniblog",
+            "servertime":self.prelogin_data["servertime"],
+            "nonce":self.prelogin_data["nonce"],
+            "pwencode":"rsa2",
+            "rsakv":self.prelogin_data["rsakv"],
+            "sp":self.pass_word,
+            "sr":"1920*1080",
+            "encoding":"UTF-8",
+            "cdult":"2",
+            "domain":"weibo.com",
+            "prelt":"40",
+            "returntype":"TEXT"}
+
+        if prelogin_data["showpin"]==1:
+            qrurl="http://login.sina.com.cn/cgi/pin.php?r=%d&s=0&p=%s" % (int(time.time()),prelogin_data["pcid"])
+            with open("captcha.jpeg","wb") as file_out:
+                file_out.write(self.session.get(qrurl).content)
+            code=input("Please input the qr code:")
+            post_data["pcid"]=prelogin_data["pcid"]
+            post_data["door"]=code
+
 
         return
