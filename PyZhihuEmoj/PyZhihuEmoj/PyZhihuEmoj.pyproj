@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1b9e942e-4d42-4f1c-a294-519866a8f7fd</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PyZhihuEmoj.py</StartupFile>
+    <StartupFile>PyWeiboLoginAPI.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
