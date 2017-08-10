@@ -172,4 +172,4 @@ class PyWeiboLoginAPI(object):
         return
 
 weibo=PyWeiboLoginAPI()
-weibo.login("13793288171","husu0301")
+weibo.login("usrname","pswd")
